@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup>
+	<DestinationFolder>$(SolutionDir)SimplePlugin</DestinationFolder>
+  </PropertyGroup>
+
+  <Target Name="CopyAssembliesToSolution" AfterTargets="PostBuildEvent">
+	<Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(DestinationFolder)" />
+    <Copy SourceFiles="$(OutputPath)SystemExtensions.NetStandard.dll" DestinationFolder="$(DestinationFolder)" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="SystemExtensions.NetStandard" Version="1.6.2" />
+  </ItemGroup>
+</Project>

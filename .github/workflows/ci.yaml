@@ -1,0 +1,59 @@
+name:  Plumsy CI Pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        targetplatform: [x64]
+
+    runs-on: windows-latest
+
+    env:
+      Solution_Path: Plumsy.sln
+      Test_Project_Path: Plumsy.Tests\Plumsy.Tests.csproj
+      Test_Plugin_Project_Path: Plumsy.Tests.SimplePlugin\Plumsy.Tests.SimplePlugin.csproj
+      Source_Project_Path: Plumsy\Plumsy.csproj
+      Actions_Allow_Unsecure_Commands: true
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.x'
+
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.1
+
+    - name: Build SimplePlugin project
+      run: dotnet build $env:Test_Plugin_Project_Path
+
+    - name: Prepare plugin files # Needs to be done manually in this pipeline
+      run: |
+        mkdir ${{ github.workspace }}\SimplePlugin
+        cp ${{ github.workspace }}\Plumsy.Tests.SimplePlugin\bin\Debug\net6.0\Plumsy.Tests.SimplePlugin.dll ${{ github.workspace }}\SimplePlugin\Plumsy.Tests.SimplePlugin.dll
+        cp ${{ github.workspace }}\Plumsy.Tests.SimplePlugin\bin\Debug\net6.0\SystemExtensions.NetStandard.dll ${{ github.workspace }}\SimplePlugin\SystemExtensions.NetStandard.dll
+
+    - name: Echo solution path
+      run: echo /p:SolutionDir=${{ github.workspace }}\
+
+    - name: Execute Plumsy Unit Tests
+      run: dotnet test $env:Test_Project_Path /p:SolutionDir=${{ github.workspace }}\ --logger:"console;verbosity=normal" # Need to manually set the SolutionDir, otherwise it's unspecified
+
+    - name: Restore Project
+      run: msbuild $env:Solution_Path /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifier=$env:RuntimeIdentifier
+      env:
+        Configuration: Debug
+        RuntimeIdentifier: win-${{ matrix.targetplatform }}

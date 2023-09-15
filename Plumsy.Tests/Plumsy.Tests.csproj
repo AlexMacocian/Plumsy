@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <Target Name="PreparePluginTestSetup" BeforeTargets="PrepareForBuild">
+    <Copy SourceFiles="$(SolutionDir)SimplePlugin\Plum.Net.Tests.SimplePlugin.dll" DestinationFolder="$(OutputPath)Plugins" />
+    <Copy SourceFiles="$(SolutionDir)SimplePlugin\SystemExtensions.NetStandard.dll" DestinationFolder="$(OutputPath)Dependencies" />
+  </Target>
+
+  <Target Name="RemoveUnwantedDependency" AfterTargets="Build">
+    <!-- We need to delete SystemExtensions.NetStandard.dll from the output path, to make the assembly resolver have to search for the dependency where we point it to -->
+    <Delete Files="$(OutputPath)SystemExtensions.NetStandard.dll" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="coverlet.collector" Version="3.2.0" />
+    <PackageReference Include="NSubstitute" Version="5.1.0" />
+    <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plum.Net.Tests.SimplePlugin\Plum.Net.Tests.SimplePlugin.csproj" />
+    <ProjectReference Include="..\Plum.Net\Plum.Net.csproj" />
+  </ItemGroup>
+
+</Project>

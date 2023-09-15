@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plumsy", "Plumsy\Plumsy.csproj", "{A9C9E517-90BE-4B5D-8B06-491DF4F125EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plumsy.Tests.SimplePlugin", "Plumsy.Tests.SimplePlugin\Plumsy.Tests.SimplePlugin.csproj", "{93D702F9-320D-4490-AE7B-8F6D70A1B2DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plumsy.Tests", "Plumsy.Tests\Plumsy.Tests.csproj", "{0C18CB86-2495-4713-A27C-C06321CC8539}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93D702F9-320D-4490-AE7B-8F6D70A1B2DB} = {93D702F9-320D-4490-AE7B-8F6D70A1B2DB}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{EB205ABC-DAFB-4F8D-A7E0-E83EC03A2678}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\cd.yaml = .github\workflows\cd.yaml
+		.github\workflows\ci.yaml = .github\workflows\ci.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9C9E517-90BE-4B5D-8B06-491DF4F125EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C9E517-90BE-4B5D-8B06-491DF4F125EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C9E517-90BE-4B5D-8B06-491DF4F125EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C9E517-90BE-4B5D-8B06-491DF4F125EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D702F9-320D-4490-AE7B-8F6D70A1B2DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D702F9-320D-4490-AE7B-8F6D70A1B2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D702F9-320D-4490-AE7B-8F6D70A1B2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D702F9-320D-4490-AE7B-8F6D70A1B2DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C18CB86-2495-4713-A27C-C06321CC8539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C18CB86-2495-4713-A27C-C06321CC8539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C18CB86-2495-4713-A27C-C06321CC8539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C18CB86-2495-4713-A27C-C06321CC8539}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3A216E7-9DC1-445B-8C7F-F080CC413731}
+	EndGlobalSection
+EndGlobal

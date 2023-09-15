@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<LangVersion>latest</LangVersion>
+	<Authors>Alexandru Macocian</Authors>
+	<Company />
+	<Product></Product>
+	<Description>Plugin management library.</Description>
+	<AssemblyVersion>1.0</AssemblyVersion>
+	<FileVersion>1.0</FileVersion>
+	<PackageProjectUrl>https://github.com/AlexMacocian/Plum</PackageProjectUrl>
+	<Version>1.0</Version>
+	<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Reflection.Metadata" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<None Include="..\LICENSE">
+	  <Pack>True</Pack>
+		<PackagePath></PackagePath>
+	</None>
+	<None Include="..\README.md" Link="README.md" />
+  </ItemGroup>
+</Project>

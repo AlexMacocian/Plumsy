@@ -1,0 +1,50 @@
+name:  Plumsy CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+      
+jobs:
+  build:
+    environment: Default
+    strategy:
+      matrix:
+        targetplatform: [x64]
+
+    runs-on: windows-latest
+
+    env:
+      Configuration: Release
+      Solution_Path: Plumsy.sln
+      Test_Project_Path: Plumsy.Tests\Plumsy.Tests.csproj
+      Source_Project_Path: Plumsy\Plumsy.csproj
+      Actions_Allow_Unsecure_Commands: true
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '7.x'
+
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.1
+
+    - name: Restore project
+      run: msbuild $env:Solution_Path /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifier=$env:RuntimeIdentifier
+      env:
+        RuntimeIdentifier: win-${{ matrix.targetplatform }}
+
+    - name: Build Plumsy project
+      run: dotnet build Plumsy -c $env:Configuration
+
+    - name: Package Plumsy
+      run: dotnet pack -c Release -o . $env:Source_Project_Path
+
+    - name: Publish
+      run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
