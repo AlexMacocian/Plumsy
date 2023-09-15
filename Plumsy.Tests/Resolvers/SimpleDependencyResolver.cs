@@ -1,9 +1,9 @@
-﻿using Plum.Net.Resolvers;
+﻿using Plumsy.Resolvers;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Plum.Net.Tests.Resolvers;
+namespace Plumsy.Tests.Resolvers;
 
 public sealed class SimpleDependencyResolver : IDependencyResolver
 {

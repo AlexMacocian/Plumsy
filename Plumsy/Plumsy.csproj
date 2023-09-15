@@ -10,13 +10,14 @@
 	<Company />
 	<Product></Product>
 	<Description>Plugin management library.</Description>
-	<AssemblyVersion>1.0</AssemblyVersion>
-	<FileVersion>1.0</FileVersion>
+	<AssemblyVersion>1.1</AssemblyVersion>
+	<FileVersion>1.1</FileVersion>
 	<PackageProjectUrl>https://github.com/AlexMacocian/Plum</PackageProjectUrl>
-	<Version>1.0</Version>
+	<Version>1.1</Version>
 	<EnableNETAnalyzers>true</EnableNETAnalyzers>
 	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,8 +27,11 @@
   <ItemGroup>
 	<None Include="..\LICENSE">
 	  <Pack>True</Pack>
-		<PackagePath></PackagePath>
+      <PackagePath></PackagePath>
 	</None>
-	<None Include="..\README.md" Link="README.md" />
+	<None Include="..\README.md" Link="README.md">
+      <Pack>True</Pack>
+	  <PackagePath></PackagePath>
+	</None>
   </ItemGroup>
 </Project>

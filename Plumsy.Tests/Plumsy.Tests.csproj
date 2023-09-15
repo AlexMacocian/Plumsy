@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <Target Name="PreparePluginTestSetup" BeforeTargets="PrepareForBuild">
-    <Copy SourceFiles="$(SolutionDir)SimplePlugin\Plum.Net.Tests.SimplePlugin.dll" DestinationFolder="$(OutputPath)Plugins" />
+    <Copy SourceFiles="$(SolutionDir)SimplePlugin\Plumsy.Tests.SimplePlugin.dll" DestinationFolder="$(OutputPath)Plugins" />
     <Copy SourceFiles="$(SolutionDir)SimplePlugin\SystemExtensions.NetStandard.dll" DestinationFolder="$(OutputPath)Dependencies" />
   </Target>
 
@@ -32,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Plum.Net.Tests.SimplePlugin\Plum.Net.Tests.SimplePlugin.csproj" />
-    <ProjectReference Include="..\Plum.Net\Plum.Net.csproj" />
+    <ProjectReference Include="..\Plumsy.Tests.SimplePlugin\Plumsy.Tests.SimplePlugin.csproj" />
+    <ProjectReference Include="..\Plumsy\Plumsy.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
-﻿using Plum.Net.Models;
+﻿using Plumsy.Models;
 
-namespace Plum.Net.Exceptions;
+namespace Plumsy.Exceptions;
 
 public sealed class PluginLoadException : Exception
 {

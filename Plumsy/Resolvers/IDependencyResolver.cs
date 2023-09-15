@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Plum.Net.Resolvers;
+namespace Plumsy.Resolvers;
 
 public interface IDependencyResolver
 {

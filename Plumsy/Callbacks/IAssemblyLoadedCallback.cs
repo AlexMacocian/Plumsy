@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Plum.Net.Callbacks;
+namespace Plumsy.Callbacks;
 
 public interface IAssemblyLoadedCallback
 {
