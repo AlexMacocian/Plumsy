@@ -1,4 +1,4 @@
-﻿namespace Plum.Net.Validators;
+﻿namespace Plumsy.Validators;
 
 public interface IEnvironmentVersionValidator
 {

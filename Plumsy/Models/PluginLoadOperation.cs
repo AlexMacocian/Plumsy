@@ -1,4 +1,4 @@
-﻿namespace Plum.Net.Models;
+﻿namespace Plumsy.Models;
 
 public abstract class PluginLoadOperation
 {

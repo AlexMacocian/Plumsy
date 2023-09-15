@@ -1,10 +1,10 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
-using Plum.Net.Models;
-using Plum.Net.Tests.Resolvers;
-using Plum.Net.Tests.SimplePlugin;
-using Plum.Net.Validators;
+using Plumsy.Models;
+using Plumsy.Tests.Resolvers;
+using Plumsy.Tests.SimplePlugin;
+using Plumsy.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ using System.Reflection;
 using System.Reflection.Metadata;
 using System.Runtime.Loader;
 
-namespace Plum.Net.Tests;
+namespace Plumsy.Tests;
 
 [TestClass]
 public class PluginManagerTests
@@ -55,7 +55,7 @@ public class PluginManagerTests
         var plugins = this.pluginManager.GetAvailablePlugins();
 
         plugins.Should().HaveCount(1);
-        plugins.First().Name.Should().Be("Plum.Net.Tests.SimplePlugin");
+        plugins.First().Name.Should().Be("Plumsy.Tests.SimplePlugin");
     }
 
     [TestMethod]

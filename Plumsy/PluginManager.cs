@@ -1,14 +1,14 @@
-﻿using Plum.Net.Callbacks;
-using Plum.Net.Exceptions;
-using Plum.Net.Models;
-using Plum.Net.Resolvers;
-using Plum.Net.Validators;
+﻿using Plumsy.Callbacks;
+using Plumsy.Exceptions;
+using Plumsy.Models;
+using Plumsy.Resolvers;
+using Plumsy.Validators;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 
-namespace Plum.Net;
+namespace Plumsy;
 
 public sealed class PluginManager
 {

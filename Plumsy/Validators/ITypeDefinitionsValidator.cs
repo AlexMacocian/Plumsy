@@ -1,6 +1,6 @@
 ﻿using System.Reflection.Metadata;
 
-namespace Plum.Net.Validators;
+namespace Plumsy.Validators;
 
 /// <summary>
 /// A validator that validates a plugin based on the TypeDefinitions it contains.

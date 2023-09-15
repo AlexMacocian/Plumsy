@@ -1,6 +1,6 @@
 ﻿using System.Extensions;
 
-namespace Plum.Net.Tests.SimplePlugin;
+namespace Plumsy.Tests.SimplePlugin;
 
 public sealed class Main
 {
