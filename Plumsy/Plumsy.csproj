@@ -10,10 +10,10 @@
 	<Company />
 	<Product></Product>
 	<Description>Plugin management library.</Description>
-	<AssemblyVersion>1.0</AssemblyVersion>
-	<FileVersion>1.0</FileVersion>
+	<AssemblyVersion>1.1</AssemblyVersion>
+	<FileVersion>1.1</FileVersion>
 	<PackageProjectUrl>https://github.com/AlexMacocian/Plum</PackageProjectUrl>
-	<Version>1.0</Version>
+	<Version>1.1</Version>
 	<EnableNETAnalyzers>true</EnableNETAnalyzers>
 	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
