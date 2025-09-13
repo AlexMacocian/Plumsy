@@ -16,7 +16,7 @@ jobs:
 
     env:
       Configuration: Release
-      Solution_Path: Plumsy.sln
+      Solution_Path: Plumsy.slnx
       Test_Project_Path: Plumsy.Tests\Plumsy.Tests.csproj
       Source_Project_Path: Plumsy\Plumsy.csproj
       Actions_Allow_Unsecure_Commands: true

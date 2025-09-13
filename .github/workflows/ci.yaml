@@ -17,7 +17,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Path: Plumsy.sln
+      Solution_Path: Plumsy.slnx
       Test_Project_Path: Plumsy.Tests\Plumsy.Tests.csproj
       Test_Plugin_Project_Path: Plumsy.Tests.SimplePlugin\Plumsy.Tests.SimplePlugin.csproj
       Source_Project_Path: Plumsy\Plumsy.csproj
