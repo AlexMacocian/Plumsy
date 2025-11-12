@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -10,10 +10,10 @@
 	<Company />
 	<Product></Product>
 	<Description>Plugin management library.</Description>
-	<AssemblyVersion>1.1</AssemblyVersion>
-	<FileVersion>1.1</FileVersion>
+	<AssemblyVersion>1.2</AssemblyVersion>
+	<FileVersion>1.2</FileVersion>
 	<PackageProjectUrl>https://github.com/AlexMacocian/Plum</PackageProjectUrl>
-	<Version>1.1</Version>
+	<Version>1.2</Version>
 	<EnableNETAnalyzers>true</EnableNETAnalyzers>
 	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Reflection.Metadata" Version="7.0.2" />
+    <PackageReference Include="System.Reflection.Metadata" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>

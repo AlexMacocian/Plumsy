@@ -10,25 +10,20 @@ using System.Runtime.CompilerServices;
 
 namespace Plumsy;
 
-public sealed class PluginManager
+public sealed class PluginManager(string pluginsBaseDirectory)
 {
     private static readonly object Lock = new();
 
-    private readonly string pluginsBaseDirectory;
-    private readonly List<IEnvironmentVersionValidator> environmentVersionValidators = new();
-    private readonly List<IMetadataValidator> metadataValidators = new();
-    private readonly List<ITypeDefinitionsValidator> typeDefinitionsValidators = new();
-    private readonly List<IAssemblyLoadedCallback> assemblyLoadCallbacks = new();
-    private readonly List<IDependencyResolver> dependencyResolvers = new();
+    private readonly string pluginsBaseDirectory = Path.GetFullPath(pluginsBaseDirectory);
+    private readonly List<IEnvironmentVersionValidator> environmentVersionValidators = [];
+    private readonly List<IMetadataValidator> metadataValidators = [];
+    private readonly List<ITypeDefinitionsValidator> typeDefinitionsValidators = [];
+    private readonly List<IAssemblyLoadedCallback> assemblyLoadCallbacks = [];
+    private readonly List<IDependencyResolver> dependencyResolvers = [];
 
     private bool locked = false;
     private bool attachedDomainEvents = false;
     private bool forceLoadDependencies = true;
-
-    public PluginManager(string pluginsBaseDirectory)
-    {
-        this.pluginsBaseDirectory = Path.GetFullPath(pluginsBaseDirectory);
-    }
 
     public PluginManager WithEnvironmentVersionValidator(IEnvironmentVersionValidator environmentVersionValidator)
     {
@@ -172,8 +167,8 @@ public sealed class PluginManager
             }
 
             var success = false;
-            PluginLoadException pluginLoadException = default!;
-            Assembly assembly = default!;
+            PluginLoadException? pluginLoadException = default;
+            Assembly? assembly = default;
             try
             {
                 assembly = Assembly.LoadFrom(plugin.Path);
@@ -203,7 +198,7 @@ public sealed class PluginManager
             }
             else
             {
-                yield return new PluginLoadOperation.ExceptionEncountered { Exception = pluginLoadException!, PluginEntry = plugin };
+                yield return new PluginLoadOperation.ExceptionEncountered { Exception = pluginLoadException ?? new Exception("Unexpected exception while loading plugin"), PluginEntry = plugin };
             }
         }
     }
@@ -216,7 +211,7 @@ public sealed class PluginManager
         }
     }
 
-    private Assembly AssemblyResolve(object? _, ResolveEventArgs resolveEventArgs)
+    private Assembly? AssemblyResolve(object? _, ResolveEventArgs resolveEventArgs)
     {
         foreach (var resolver in this.dependencyResolvers)
         {
@@ -227,7 +222,8 @@ public sealed class PluginManager
             }
         }
 
-        throw new InvalidOperationException($"Unable to resolve dependency {resolveEventArgs.Name}. Requesting assembly: {resolveEventArgs.RequestingAssembly}");
+        // Return null to allow the runtime to continue with its default resolution mechanisms
+        return null;
     }
 
     private bool ValidatePlugin(string path, out PluginEntry? plugin)

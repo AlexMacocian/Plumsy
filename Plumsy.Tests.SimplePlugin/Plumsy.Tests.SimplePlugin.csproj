@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -17,6 +17,6 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="SystemExtensions.NetStandard" Version="1.6.2" />
+    <PackageReference Include="SystemExtensions.NetStandard" Version="1.6.12" />
   </ItemGroup>
 </Project>

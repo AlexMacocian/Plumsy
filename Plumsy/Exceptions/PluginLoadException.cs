@@ -2,12 +2,7 @@
 
 namespace Plumsy.Exceptions;
 
-public sealed class PluginLoadException : Exception
+public sealed class PluginLoadException(string? message, Exception? innerException, PluginEntry plugin) : Exception(message, innerException)
 {
-    public PluginEntry Plugin { get; }
-
-    public PluginLoadException(string? message, Exception? innerException, PluginEntry plugin) : base(message, innerException)
-    {
-        this.Plugin = plugin;
-    }
+    public PluginEntry Plugin { get; } = plugin;
 }
