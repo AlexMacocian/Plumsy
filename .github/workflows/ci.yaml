@@ -43,8 +43,8 @@ jobs:
     - name: Prepare plugin files # Needs to be done manually in this pipeline
       run: |
         mkdir ${{ github.workspace }}\SimplePlugin
-        cp ${{ github.workspace }}\Plumsy.Tests.SimplePlugin\bin\Debug\net6.0\Plumsy.Tests.SimplePlugin.dll ${{ github.workspace }}\SimplePlugin\Plumsy.Tests.SimplePlugin.dll
-        cp ${{ github.workspace }}\Plumsy.Tests.SimplePlugin\bin\Debug\net6.0\SystemExtensions.NetStandard.dll ${{ github.workspace }}\SimplePlugin\SystemExtensions.NetStandard.dll
+        cp ${{ github.workspace }}\Plumsy.Tests.SimplePlugin\bin\Debug\net10.0\Plumsy.Tests.SimplePlugin.dll ${{ github.workspace }}\SimplePlugin\Plumsy.Tests.SimplePlugin.dll
+        cp ${{ github.workspace }}\Plumsy.Tests.SimplePlugin\bin\Debug\net10.0\SystemExtensions.NetStandard.dll ${{ github.workspace }}\SimplePlugin\SystemExtensions.NetStandard.dll
 
     - name: Echo solution path
       run: echo /p:SolutionDir=${{ github.workspace }}\
